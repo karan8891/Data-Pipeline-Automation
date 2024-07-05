@@ -1,0 +1,19 @@
+# Define build steps
+steps:
+- name: 'gcr.io/cloud-builders/docker'  # Build image with dependencies
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/your-image-name:latest', '.']
+
+- name: 'gcr.io/$PROJECT_ID/your-image-name:latest'  # Copy code to DAGs folder
+  args: ['cp', '-r', '/workspace/', '/composer/dags/']
+
+# Set triggers (e.g., on push to Git repository)
+triggers:
+  - cloud-source-repository:
+      project: $PROJECT_ID
+      repo: your-repo-name
+      branch: main
+
+# Replace placeholders:
+#  * $PROJECT_ID: Your GCP project ID
+#  * your-image-name: Name of the Docker image for your code
+#  * your-repo-name: Name of your Git repository
