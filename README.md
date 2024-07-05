@@ -17,7 +17,7 @@ The pipeline follows these steps:
 3. **Data Storage (BigQuery):**
    - The data, either transformed (if Dataflow is used) or original, is written to a BigQuery table. This can be done directly by the Pub/Sub subscriber or through the Dataflow pipeline.
 
-### Draw.io Visualization (ASCII art)
+### Project Visualization
 
 ```
     +-------------------+     +-------------------+     +-------------------+
