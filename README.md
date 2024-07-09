@@ -75,4 +75,4 @@ The code demonstrates how to integrate the Python functions you created in Proje
 * **Scheduling:** The `schedule_interval` parameter (in this example, @hourly) allows you to run the pipeline automatically on an hourly basis (adjust this as needed).
 * **Monitoring:** Airflow provides a web interface to monitor the status of your DAG runs, track task successes/failures, and view logs.
 
-Essentially, this code snippet leverages Airflow to transform your Python functions from project 1 into a scheduled, automated data pipeline. Airflow takes care of the execution order, scheduling, and monitoring, making your data processing reliable and manageable.
+Essentially, this code snippet leverages Airflow to transform your Python functions from project into a scheduled, automated data pipeline. Airflow takes care of the execution order, scheduling, and monitoring, making your data processing reliable and manageable.
