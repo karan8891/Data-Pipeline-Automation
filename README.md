@@ -42,6 +42,12 @@ The pipeline follows these steps:
     +-------------------+
 ```
 
+---
+
+![[Data Architecture](https://github.com/karan8891/Data-Pipeline-Automation/blob/main/images/datapipeline.jpg)]
+
+---
+
 **Explanation:**
 
 * `Start`: Represents the starting point of the data pipeline.
