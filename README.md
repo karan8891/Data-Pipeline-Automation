@@ -44,7 +44,7 @@ The pipeline follows these steps:
 
 ---
 
-![[Data Architecture](https://github.com/karan8891/Data-Pipeline-Automation/blob/main/images/datapipeline.jpg)]
+![Data Architecture](https://github.com/karan8891/Data-Pipeline-Automation/blob/main/images/datapipeline.jpg)
 
 ---
 
