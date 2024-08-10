@@ -6,14 +6,6 @@
 - Access to Google Cloud services (BigQuery, Pub/Sub, Dataflow, Cloud Composer)
 - Python 3.x installed
 
-### Setup Instructions
-
-1. **Clone the Repository**:
-
-   ```bash
-   git clone https://github.com/yourusername/your-repo.git
-   cd your-repo
-
 ---
 
 # Data Ingestion and Processing Pipeline
