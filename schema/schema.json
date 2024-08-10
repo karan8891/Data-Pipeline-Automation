@@ -1,16 +1,7 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "name": {
-      "type": "string"
-    },
-    "age": {
-      "type": "integer"
-    },
-    "city": {
-      "type": "string"
-    }
-  },
-  "required": ["name", "age", "city"]
+  "fields": [
+    {"name": "name", "type": "STRING", "mode": "REQUIRED"},
+    {"name": "age", "type": "INTEGER", "mode": "REQUIRED"},
+    {"name": "city", "type": "STRING", "mode": "REQUIRED"}
+  ]
 }
