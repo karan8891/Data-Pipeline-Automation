@@ -1,19 +1,31 @@
-# Define build steps
 steps:
-- name: 'gcr.io/cloud-builders/docker'  # Build image with dependencies
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/your-image-name:latest', '.']
+  # Step 1: Upload the Dataflow script to a GCS bucket
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['cp', 'path/to/your_dataflow_script.py', 'gs://your-bucket/path_to_your_dataflow_script.py']
+  
+  # Step 2: Upload the Airflow DAG to the Cloud Composer environment
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['cp', 'path/to/your_dag.py', 'gs://your-composer-bucket/dags/your_dag.py']
 
-- name: 'gcr.io/$PROJECT_ID/your-image-name:latest'  # Copy code to DAGs folder
-  args: ['cp', '-r', '/workspace/', '/composer/dags/']
+  # Step 3: Upload the schema.json file to the GCS bucket
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['cp', 'path/to/schema.json', 'gs://your-bucket/schema.json']
 
-# Set triggers (e.g., on push to Git repository)
-triggers:
-  - cloud-source-repository:
-      project: $PROJECT_ID
-      repo: your-repo-name
-      branch: main
+  # Step 4: Trigger the Airflow DAG (Optional)
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: [
+      'composer',
+      'environments',
+      'run',
+      'your-composer-environment',
+      '--location',
+      'your-location',
+      'trigger_dag',
+      '--',
+      'pubsub_ingestion_pipeline'
+    ]
 
-# Replace placeholders:
-#  * $PROJECT_ID: Your GCP project ID
-#  * your-image-name: Name of the Docker image for your code
-#  * your-repo-name: Name of your Git repository
+# Define the service account if required
+serviceAccount: your-service-account@your-project.iam.gserviceaccount.com
+
+timeout: "1800s"  # Set timeout to 30 minutes (adjust as needed)
