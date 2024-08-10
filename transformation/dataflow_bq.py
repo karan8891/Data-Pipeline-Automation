@@ -3,21 +3,22 @@ from apache_beam.options.pipeline_options import PipelineOptions, StandardOption
 from apache_beam.io.gcp.pubsub import ReadFromPubSub
 from apache_beam.io.gcp.bigquery import WriteToBigQuery
 import json
+import os
 
-# Define your project ID, BigQuery dataset, and table name
+# Define your project ID, Pub/Sub subscription name, and BigQuery dataset/table name
 project_id = "genial-upgrade-427514-r9"
 subscription_name = "your-subscription-name"  # Replace with your subscription name
 dataset_id = "your_dataset"  # Replace with your dataset name
 table_id = "your_table"  # Replace with your table name
 
-# Define the BigQuery schema
-table_schema = {
-    "fields": [
-        {"name": "name", "type": "STRING", "mode": "REQUIRED"},
-        {"name": "age", "type": "INTEGER", "mode": "REQUIRED"},
-        {"name": "city", "type": "STRING", "mode": "REQUIRED"}
-    ]
-}
+# Path to the schema file
+schema_file_path = "dir/schema.json"
+
+def load_schema(schema_file):
+    """Loads the BigQuery schema from a JSON file."""
+    with open(schema_file, 'r') as file:
+        schema = json.load(file)
+    return schema
 
 def parse_pubsub_message(message):
     """Parses the Pub/Sub message and returns a dictionary."""
@@ -47,6 +48,9 @@ def run():
     # Set up Setup options
     setup_options = options.view_as(SetupOptions)
     setup_options.save_main_session = True
+
+    # Load the BigQuery schema from the schema.json file
+    table_schema = load_schema(schema_file_path)
 
     with beam.Pipeline(options=options) as p:
         (
