@@ -1,5 +1,16 @@
-data_schema = {
-  "name": "STRING",
-  "age": "INTEGER",
-  "city": "STRING"
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "age": {
+      "type": "integer"
+    },
+    "city": {
+      "type": "string"
+    }
+  },
+  "required": ["name", "age", "city"]
 }
