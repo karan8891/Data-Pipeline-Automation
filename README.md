@@ -54,7 +54,7 @@ This project implements a data ingestion and processing pipeline that retrieves 
 
 ---
 
-![Data Architecture]([(https://github.com/karan8891/Data-Pipeline-Automation/blob/main/images/data-automtion%20(1).jpg)])
+![Data Architecture]((https://github.com/karan8891/Data-Pipeline-Automation/blob/main/images/data-automtion%20(1).jpg))
 
 ---
 
